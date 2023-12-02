@@ -1,0 +1,70 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background-color: inherit;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  .images_container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    width: min(90%, 1000px);
+    img,
+    .loading {
+      width: 200px;
+      height: 300px;
+      border-radius: 10px;
+      box-shadow: 10px 10px 15px rgba($color: black, $alpha: 0.5);
+    }
+
+    img {
+      cursor: pointer;
+      border: 1px solid;
+    }
+    .loading {
+      background-color: black;
+      color: white;
+      display: grid;
+      place-items: center;
+      svg {
+        fill: white;
+        width: 50px;
+        animation: load 1s infinite;
+      }
+    }
+    .hide {
+      display: none;
+    }
+  }
+  .main_menu {
+    background-color: blue;
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}
+@keyframes load {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
