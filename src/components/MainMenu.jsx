@@ -14,6 +14,7 @@ const MainMenu = (props) => {
       <motion.div
         animate={{ opacity: [0, 1], transition: { duration: 1 } }}
         className="main_menu"
+        exit={{ opacity: 0 }}
       >
         <motion.img
           id="main_menu_logo"

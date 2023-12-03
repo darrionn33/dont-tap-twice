@@ -9,7 +9,10 @@ const Game = () => {
   const [bestScore, setBestScore] = useState(0);
 
   return (
-    <motion.div className="game">
+    <motion.div
+      className="game"
+      animate={{ opacity: [0, 1], transition: { duration: 1 } }}
+    >
       <header>
         <span>Score: {score}</span>
         <span>Best Score: {bestScore}</span>
