@@ -1,6 +1,7 @@
 import Images from "./Images";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Attribution from "./Attribution";
 const Game = () => {
   let cards = 9;
 
@@ -19,6 +20,7 @@ const Game = () => {
         setBestScore={setBestScore}
         cards={cards}
       />
+      <Attribution />
     </motion.div>
   );
 };

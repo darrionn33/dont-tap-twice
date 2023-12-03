@@ -114,6 +114,15 @@ button {
       }
     }
   }
+  .attribution {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    color: white;
+    text-decoration: underline;
+  }
 }
 @keyframes load {
   from {
