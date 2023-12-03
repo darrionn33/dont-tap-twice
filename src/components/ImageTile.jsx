@@ -7,6 +7,7 @@ const ImageTile = (props) => {
           props.updateCounter(props.index);
           props.shuffleOrder();
         }}
+        onContextMenu={(e) => e.preventDefault()}
       />
     </>
   );
