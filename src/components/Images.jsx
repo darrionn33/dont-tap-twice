@@ -1,29 +1,59 @@
 import ImageTile from "./ImageTile";
 import { useState } from "react";
 const Images = (props) => {
-  const images = [];
-  const [imagesCounter, setImagesCounter] = useState(new Array(8).fill(0));
+  const generateOrder = () => {
+    const order = [];
+    for (let i = 0; i < props.cards; i++) {
+      let random = Math.floor(Math.random() * 18 + 1);
+      while (order.includes(random)) {
+        random = Math.floor(Math.random() * 18 + 1);
+      }
+      order.push(random);
+    }
+    return order;
+  };
+
+  const shuffleOrder = () => {
+    setOrder(generateOrder());
+  };
+
+  const [order, setOrder] = useState(generateOrder());
+
+  const [imagesCounter, setImagesCounter] = useState(new Array(19).fill(0));
   const updateCounter = (index) => {
     imagesCounter[index]++;
-    console.log(imagesCounter[index]);
     if (imagesCounter[index] < 2) {
       props.setScore((prevScore) => prevScore + 1);
     } else {
-      setImagesCounter(new Array(8).fill(0));
+      imagesCounter.fill(0);
+      props.setBestScore((prevBestScore) => {
+        if (props.score > prevBestScore) {
+          return props.score;
+        } else {
+          return prevBestScore;
+        }
+      });
       props.setScore(0);
     }
   };
-  for (let i = 0; i < 8; i++) {
-    images.push(
-      <ImageTile
-        src={props.src + "&random=" + i + "x"}
-        key={i}
-        index={i}
-        updateCounter={updateCounter}
-      />
-    );
-  }
-  return <div className="images_container">{images}</div>;
+
+  return (
+    <div className="images_container">
+      {order.map((item, index) => {
+        if (index < props.cards) {
+          return (
+            <ImageTile
+              src={"/dont-tap-twice/kets/" + item + ".png"}
+              key={item}
+              index={item}
+              updateCounter={updateCounter}
+              shuffleOrder={shuffleOrder}
+            />
+          );
+        }
+      })}
+    </div>
+  );
 };
 
 export default Images;

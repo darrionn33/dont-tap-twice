@@ -1,15 +1,10 @@
 import "./App.scss";
 import { useState } from "react";
-import Images from "./components/Images";
+import MainMenu from "./components/MainMenu";
+import Game from "./components/Game";
 
 function App() {
-  const [src, setSrc] = useState("https://loremflickr.com/200/300/kitten");
-  const [score, setScore] = useState(0);
-  return (
-    <>
-      <header>Score:{score}</header>
-      <Images src={src} setScore={setScore} />
-    </>
-  );
+  const [isGame, setIsGame] = useState(false);
+  return <>{isGame ? <Game /> : <MainMenu setIsGame={setIsGame} />}</>;
 }
 export default App;

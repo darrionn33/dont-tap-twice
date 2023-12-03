@@ -3,7 +3,7 @@ import LoadingImage from "./LoadingImage";
 
 const ImageTile = (props) => {
   const [loading, setLoading] = useState(true);
-  const loadHandler = (e) => {
+  const loadHandler = () => {
     setLoading(false);
   };
 
@@ -16,6 +16,7 @@ const ImageTile = (props) => {
         className={loading ? "hide" : ""}
         onClick={() => {
           props.updateCounter(props.index);
+          props.shuffleOrder();
         }}
       />
     </>
