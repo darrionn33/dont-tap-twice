@@ -1,5 +1,7 @@
 # Don't Tap Twice!!
 
+![](/ss.png)
+
 A game that tests your memory.
 
 What's your high score? 😼
@@ -10,3 +12,4 @@ What's your high score? 😼
 
 - React
 - SASS
+- Framer Motion
