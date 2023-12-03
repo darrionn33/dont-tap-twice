@@ -11,7 +11,7 @@ const Game = () => {
   return (
     <motion.div
       className="game"
-      animate={{ opacity: [0, 1], transition: { duration: 1 } }}
+      animate={{ opacity: [0, 1], transition: { duration: 0.1, delay: 0.5 } }}
     >
       <header>
         <span>Score: {score}</span>

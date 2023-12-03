@@ -9,9 +9,9 @@ function App() {
   cacheImages();
   const [isGame, setIsGame] = useState(false);
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="sync">
       {isGame ? (
-        <Game />
+        <Game key="game_key" />
       ) : (
         <MainMenu setIsGame={setIsGame} key="main_menu_key" />
       )}
