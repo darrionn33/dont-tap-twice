@@ -1,3 +1,4 @@
+import { useAnimate } from "framer-motion";
 import ImageTile from "./ImageTile";
 import { useState } from "react";
 const Images = (props) => {
@@ -13,10 +14,14 @@ const Images = (props) => {
     return order;
   };
 
+  const [scope, animate] = useAnimate();
+
   const shuffleOrder = () => {
     setOrder(generateOrder());
+    animate(scope.current, {
+      opacity: [0, 1],
+    });
   };
-
   const [order, setOrder] = useState(generateOrder());
 
   const [imagesCounter, setImagesCounter] = useState(new Array(19).fill(0));
@@ -38,7 +43,7 @@ const Images = (props) => {
   };
 
   return (
-    <div className="images_container">
+    <div className="images_container" ref={scope}>
       {order.map((item, index) => {
         if (index < props.cards) {
           return (
