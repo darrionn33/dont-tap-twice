@@ -1,7 +1,13 @@
 import { useAnimate } from "framer-motion";
 import ImageTile from "./ImageTile";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GameContext } from "../App";
 const Images = (props) => {
+  const setGameOver = useContext(GameContext).setGameOver;
+  const score = useContext(GameContext).score;
+  const setScore = useContext(GameContext).setScore;
+  const setLastScore = useContext(GameContext).setLastScore;
+  const setBestScore = useContext(GameContext).setBestScore;
   const generateOrder = () => {
     const order = [];
     for (let i = 0; i < props.cards; i++) {
@@ -28,17 +34,19 @@ const Images = (props) => {
   const updateCounter = (index) => {
     imagesCounter[index]++;
     if (imagesCounter[index] < 2) {
-      props.setScore((prevScore) => prevScore + 1);
+      setScore((prevScore) => prevScore + 1);
     } else {
+      setGameOver(true);
       imagesCounter.fill(0);
-      props.setBestScore((prevBestScore) => {
-        if (props.score > prevBestScore) {
-          return props.score;
+      setBestScore((prevBestScore) => {
+        if (score > prevBestScore) {
+          return score;
         } else {
           return prevBestScore;
         }
       });
-      props.setScore(0);
+      setLastScore(score);
+      setScore(0);
     }
   };
 

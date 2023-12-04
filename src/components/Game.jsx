@@ -1,7 +1,8 @@
 import Images from "./Images";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { motion } from "framer-motion";
 import Attribution from "./Attribution";
+import { GameContext } from "../App";
 const Game = () => {
   let cardStarter = 6;
   if (window.matchMedia("(min-width: 940px)").matches) {
@@ -18,8 +19,8 @@ const Game = () => {
     }
   };
 
-  const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
+  const score = useContext(GameContext).score;
+  const bestScore = useContext(GameContext).bestScore;
 
   return (
     <motion.div
@@ -30,12 +31,7 @@ const Game = () => {
         <span>Score: {score}</span>
         <span>Best Score: {bestScore}</span>
       </header>
-      <Images
-        score={score}
-        setScore={setScore}
-        setBestScore={setBestScore}
-        cards={cards}
-      />
+      <Images cards={cards} />
       <Attribution />
     </motion.div>
   );
