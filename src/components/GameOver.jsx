@@ -11,14 +11,31 @@ const GameOver = () => {
       <motion.div
         className="game_over"
         initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: 1, scale: 1, transition: { duration: 0.1 } }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          x: [0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -3, 0],
+          transition: { x: { duration: 1 }, duration: 0.1 },
+        }}
       >
         {lastScore === 18 ? (
-          <motion.p animate={{ opacity: [0, 1], transition: { delay: 0.005 } }}>
+          <motion.p
+            animate={{
+              opacity: [0, 1],
+              scale: [1, 1.5, 1],
+              transition: { duration: 0.5, delay: 0.3 },
+            }}
+          >
             YOU WON!
           </motion.p>
         ) : (
-          <motion.p animate={{ opacity: [0, 1], transition: { delay: 0.005 } }}>
+          <motion.p
+            animate={{
+              opacity: [0, 1],
+              scale: [1, 1.5, 1],
+              transition: { duration: 0.5, delay: 0.3 },
+            }}
+          >
             GAME OVER!
           </motion.p>
         )}
