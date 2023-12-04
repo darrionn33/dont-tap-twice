@@ -1,6 +1,7 @@
 # Don't Tap Twice!!
 
-![](/ss.png)
+![](/ss-menu.png)
+![](/ss-game.png)
 
 A game that tests your memory.
 
