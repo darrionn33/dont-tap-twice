@@ -57,6 +57,12 @@ const Images = (props) => {
       setLastScore(score);
       setScore(0);
     }
+
+    if (score === 18) {
+      setScore(0);
+      setLastScore(18);
+      setGameOver(true);
+    }
   };
 
   return (

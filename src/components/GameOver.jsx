@@ -13,10 +13,12 @@ const GameOver = () => {
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1, transition: { duration: 0.1 } }}
       >
-        <p>GAME OVER!</p>
+        {lastScore === 18 ? <p>YOU WON!</p> : <p>GAME OVER!</p>}
 
         <p>You scored {lastScore}!</p>
-        {lastScore >= bestScore ? (
+        {lastScore === 18 ? (
+          <p>That's the highest score!</p>
+        ) : lastScore >= bestScore ? (
           <p>That's the best score...yet!</p>
         ) : (
           <p>Try again!</p>
