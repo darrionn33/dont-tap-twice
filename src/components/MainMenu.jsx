@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import { useEffect } from "react";
 const MainMenu = (props) => {
   useEffect(() => {
     const logo = document.querySelector("#main_menu_logo");
+    const startButton = document.querySelector("#start_button");
     logo.style.top = `calc(50% - ${
-      logo.getBoundingClientRect().width / 2 + 70
+      logo.getBoundingClientRect().width / 2 +
+      startButton.getBoundingClientRect().height +
+      10
     }px)`;
   }, []);
 
@@ -23,6 +26,7 @@ const MainMenu = (props) => {
           transition={{ duration: 0.5, delay: 2 }}
         />
         <motion.button
+          id="start_button"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 2 }}

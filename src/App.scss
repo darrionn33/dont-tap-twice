@@ -39,11 +39,13 @@ button {
       height: $size;
       position: absolute;
       top: calc(50% - 250px);
+      filter: drop-shadow(7px 7px 0px black);
     }
     button {
       background: rgb(116, 118, 230);
       color: white;
-      padding: 15px 20px;
+      padding: 20px 30px;
+      font-size: large;
       border-radius: 10px;
       text-transform: uppercase;
     }
