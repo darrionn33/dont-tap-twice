@@ -8,27 +8,36 @@ const Images = (props) => {
   const setScore = useContext(GameContext).setScore;
   const setLastScore = useContext(GameContext).setLastScore;
   const setBestScore = useContext(GameContext).setBestScore;
-  const generateOrder = () => {
-    const order = [];
-    for (let i = 0; i < props.cards; i++) {
-      let random = Math.floor(Math.random() * 18 + 1);
-      while (order.includes(random)) {
-        random = Math.floor(Math.random() * 18 + 1);
+
+  const generateUniqueOrder = (oldOrder) => {
+    const generatedOrder = [];
+    const generateOrder = () => {
+      generatedOrder.length = 0;
+      for (let i = 0; i < props.cards; i++) {
+        let random = Math.floor(Math.random() * 18 + 1);
+        while (generatedOrder.includes(random)) {
+          random = Math.floor(Math.random() * 18 + 1);
+        }
+        generatedOrder.push(random);
       }
-      order.push(random);
+    };
+    generateOrder();
+    if (generatedOrder === oldOrder) {
+      generateOrder;
     }
-    return order;
+    return generatedOrder;
   };
 
   const [scope, animate] = useAnimate();
 
+  const [order, setOrder] = useState(generateUniqueOrder());
+
   const shuffleOrder = () => {
-    setOrder(generateOrder());
+    setOrder(generateUniqueOrder(order));
     animate(scope.current, {
       opacity: [0, 1],
     });
   };
-  const [order, setOrder] = useState(generateOrder());
 
   const [imagesCounter, setImagesCounter] = useState(new Array(19).fill(0));
   const updateCounter = (index) => {
