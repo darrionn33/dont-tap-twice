@@ -22,8 +22,8 @@ const Images = (props) => {
       }
     };
     generateOrder();
-    if (generatedOrder === oldOrder) {
-      generateOrder;
+    while (generatedOrder === oldOrder) {
+      generateOrder();
     }
     return generatedOrder;
   };

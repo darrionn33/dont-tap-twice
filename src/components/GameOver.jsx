@@ -13,7 +13,15 @@ const GameOver = () => {
         initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1, transition: { duration: 0.1 } }}
       >
-        {lastScore === 18 ? <p>YOU WON!</p> : <p>GAME OVER!</p>}
+        {lastScore === 18 ? (
+          <motion.p animate={{ opacity: [0, 1], transition: { delay: 0.005 } }}>
+            YOU WON!
+          </motion.p>
+        ) : (
+          <motion.p animate={{ opacity: [0, 1], transition: { delay: 0.005 } }}>
+            GAME OVER!
+          </motion.p>
+        )}
 
         <p>You scored {lastScore}!</p>
         {lastScore === 18 ? (
