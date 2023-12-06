@@ -1,16 +1,21 @@
-const ImageTile = (props) => {
-  return (
-    <>
+import { Component } from "react";
+
+class ImageTile extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
       <img
-        src={props.src}
+        src={this.props.src}
         onClick={() => {
-          props.updateCounter(props.index);
-          props.shuffleOrder();
+          this.props.updateCounter(this.props.index);
+          this.props.shuffleOrder();
         }}
         onContextMenu={(e) => e.preventDefault()}
       />
-    </>
-  );
-};
+    );
+  }
+}
 
 export default ImageTile;
