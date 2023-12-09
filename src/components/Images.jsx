@@ -1,6 +1,6 @@
 import { useAnimate } from "framer-motion";
 import ImageTile from "./ImageTile";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { GameContext } from "../App";
 const Images = (props) => {
   const setGameOver = useContext(GameContext).setGameOver;
@@ -39,14 +39,14 @@ const Images = (props) => {
     });
   };
 
-  const [imagesCounter, setImagesCounter] = useState(new Array(19).fill(0));
+  const imagesCounter = useRef(new Array(19).fill(0));
   const updateCounter = (index) => {
-    imagesCounter[index]++;
-    if (imagesCounter[index] < 2) {
+    imagesCounter.current[index]++;
+    if (imagesCounter.current[index] < 2) {
       setScore((prevScore) => prevScore + 1);
     } else {
       setGameOver(true);
-      imagesCounter.fill(0);
+      imagesCounter.current.fill(0);
       setBestScore((prevBestScore) => {
         if (score > prevBestScore) {
           return score;
